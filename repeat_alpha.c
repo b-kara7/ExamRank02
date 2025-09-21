@@ -1,34 +1,26 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   repeat_alpha.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: bkara <bkara@student.42istanbul.com.t      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/17 13:19:02 by bkara             #+#    #+#             */
-/*   Updated: 2025/09/17 13:30:26 by bkara            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <unistd.h>
 
-int main(int ac, char *av[])
+int main(int argc, char *argv[])
 {
 	int i;
 	int r;
 
-	if(ac == 2)
+	if(argc == 2)
 	{
-		i =0;
-		r = 0;
-		while(av[1][i] >= 'a' && av[1][i] <= 'z')
-		r = av[1][i] - 'a' + 1;
-		
-		while(av[1][i] >= 'A' && av[1][i] <= 'Z')
-		r = av[1][i] - 'A' + 1;
+		i = 0;
+	
+		while(argv[1][i])
+		{
+			r = 1;
+			if(argv[1][i] >= 'a' && argv[1][i] <= 'z')
+				r = argv[1][i] - 'a' + 1;
+			else if(argv[1][i] >= 'A' && argv[1][i] <= 'Z')
+				r = argv[1][i] - 'A' + 1;
+			while(r-- > 0)
+				write(1, &argv[1][i], 1);
+			i++;
+		}
 
-		while(r-- > 0)
-			write(1, &av[1][i], 1); 	
 	}
 	write(1, "\n", 1);
 	return 0;
