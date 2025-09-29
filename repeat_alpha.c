@@ -25,3 +25,12 @@ int main(int argc, char *argv[])
 	write(1, "\n", 1);
 	return 0;
 }
+
+/*  Argüman olarak bir string alıyoruz.
+
+Her harfi alfabedeki sırasına göre tekrar ediyoruz.
+
+Büyük/küçük fark etmiyor (index aynı).
+
+Harf değilse → olduğu gibi bir kez yaz.
+*/

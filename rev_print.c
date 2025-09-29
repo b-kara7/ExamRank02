@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rev_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkara <bkara@student.42istanbul.com.t      +#+  +:+       +#+        */
+/*   By: bkara <bkara@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 13:08:31 by bkara             #+#    #+#             */
-/*   Updated: 2025/09/17 13:16:56 by bkara            ###   ########.fr       */
+/*   Updated: 2025/09/29 17:06:10 by bkara            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,3 +28,11 @@ int main(int argc, char *argv[])
 	write(1, "\n", 1);
 	return (0);
 }
+ /* Program 1 string alacak (av[1]).
+
+Onu tersten ekrana yazdıracak.
+
+Sonunda mutlaka \n olacak.
+
+Eğer argüman yoksa ya da fazlaysa → sadece \n.
+*/

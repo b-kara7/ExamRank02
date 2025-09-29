@@ -1,32 +1,29 @@
+
 #include <unistd.h>
 
-int	ft_putchar(char c)
+int	main(int ac, char **av)
 {
-	return write(1, &c, 1);
-}
+	int i = 0, j;
+	int lookup[256] = {0};
 
-int	main(void)
-{
-	char *s1 = "padinton";     // 1. string
-	char *s2 = "paqefwtdjetyiytjneytjoeyjnejeyj"; // 2. string
-
-	int	i = 0, j;
-	int	lookup[256] = {0};
-
-	while (s1[i]) // ilk stringin her karakterini gez
+	if (ac == 3)
 	{
-		j = 0;
-		while (s2[j]) // ikinci stringin her karakterini gez
+		while (av[1][i])
 		{
-			if (s1[i] == s2[j] && !lookup[(int)s2[j]])
+			j = 0;
+			while (av[2][j])
 			{
-				lookup[(int)s2[j]] = 1;
-				ft_putchar(s2[j]); // ortak karakteri yazdır
+				if (av[1][i] == av[2][j] && !lookup[(unsigned char)av[1][i]])
+				{
+					lookup[(unsigned char)av[1][i]] = 1;
+					write(1, &av[1][i], 1);
+					break; // bulunduysa daha fazla bakmaya gerek yok
+				}
+				j++;
 			}
-			j++;
+			i++;
 		}
-		i++;
 	}
-	ft_putchar('\n');
+	write(1, "\n", 1);
 	return (0);
 }

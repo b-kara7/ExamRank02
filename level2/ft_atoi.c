@@ -17,13 +17,13 @@ int ft_atoi(const char *str)
 		i++;
 	}
 // rrakamları oku ve sayı oluştur
-while(str[i] >= '0' && str[i] <= '9')
-{
-	res = res * 10 + (str[i] - '0');
-	i++;
-}
+	while(str[i] >= '0' && str[i] <= '9')
+	{
+		res = res * 10 + (str[i] - '0');
+		i++;
+	}
 //sonucu işaretle çarp
-return(res * sign);
+	return(res * sign);
 }
 
 int main()

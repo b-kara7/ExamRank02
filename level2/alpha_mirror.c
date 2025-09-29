@@ -20,4 +20,5 @@ int main(int ac, char **av)
     write(1, "\n", 1);
     return (0);
 }
-// Subject: Harfleri alfabenin zıt ucundaki harfle değiştir. (a→z, b→y … A→Z). Harf dışındaki karakterler değişmez.
+// Subject: Harfleri alfabenin zıt ucundaki harfle değiştir.
+// (a→z, b→y … A→Z). Harf dışındaki karakterler değişmez.

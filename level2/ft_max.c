@@ -1,16 +1,18 @@
-
 int max(int *tab, unsigned int len)
 {
-    int m = 0;
+    int m;
 
     if (len == 0)
         return (0);
-    m = tab[--len];
+    m = tab[0];
     while (len--)
+    {
         if (tab[len] > m)
             m = tab[len];
+    }
     return (m);
 }
+
 /*📌 Mantık
 len == 0 → direkt 0 dön.
 
