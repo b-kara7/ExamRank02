@@ -24,16 +24,14 @@ int	ft_atoi(char *str)
 
 void	ft_putnbr(int n)
 {
-	long nb = n;                   // negatifleri düzgün yazmak için long
-
-	if (nb < 0)
+	if (n < 0)
 	{
 		write(1, "-", 1);
-		nb = -nb;
+		n = -n;
 	}
-	if (nb >= 10)
-		ft_putnbr(nb / 10);
-	char c = nb % 10 + '0';
+	if (n > 9)
+		ft_putnbr(n / 10);
+	char c = n % 10 + '0';
 	write(1, &c, 1);
 }
 
