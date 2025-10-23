@@ -25,19 +25,10 @@ char *ft_strrev(char *str)
 
 #include <stdio.h>
 
-char *ft_strrev(char *str);
-
 int main(void)
 {
-    char s1[] = "hello";
-    char s2[] = "42istanbul";
-    char s3[] = "a";
-    char s4[] = "";
-
-    printf("Before: %s | After: %s\n", s1, ft_strrev(s1));
-    printf("Before: %s | After: %s\n", s2, ft_strrev(s2));
-    printf("Before: %s | After: %s\n", s3, ft_strrev(s3));
-    printf("Before: %s | After: %s\n", s4, ft_strrev(s4));
-
+    char s[] = "ezgi";
+    
+    printf("After: %s\n",ft_strrev(s));
     return 0;
 }

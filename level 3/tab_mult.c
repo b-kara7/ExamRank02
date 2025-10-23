@@ -1,48 +1,21 @@
 #include <unistd.h>
-
-int	ft_atoi(char *str)
-{
-	int	i = 0;
-	int	sign = 1;
-	int	result = 0;
-
-	// baştaki boşlukları atla
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-
-	// işaret kontrolü
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
-	}
-
-	// rakamları oku
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = result * 10 + (str[i] - '0');
-		i++;
-	}
-
-	return (result * sign);
-}
+#include <stdlib.h>
 
 void	ft_putnbr(int n)
 {
-	if (n >= 10)
+	if (n > 9)
 		ft_putnbr(n / 10);
-	char c = (n % 10) + '0';
-	write(1, &c, 1);
+	write(1, &"0123456789"[n % 10], 1);
 }
 
 int	main(int ac, char **av)
 {
+	int	n;
+	int	i = 1;
+
 	if (ac == 2)
 	{
-		int	n = ft_atoi(av[1]);
-		int	i = 1;
-
+		n = atoi(av[1]);
 		while (i <= 9)
 		{
 			ft_putnbr(i);
@@ -54,7 +27,5 @@ int	main(int ac, char **av)
 			i++;
 		}
 	}
-	else
-		write(1, "\n", 1);
 	return (0);
 }

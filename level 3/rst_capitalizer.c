@@ -1,24 +1,17 @@
 #include <unistd.h>
 
-void	rstr_capitalizer(char *str)
+void	rstr_cap(char *s)
 {
 	int	i = 0;
 
-	while (str[i])
+	while (s[i])
 	{
-		if (str[i] >= 'A' && str[i] <= 'Z')
-			str[i] += 32;                      // tümünü küçült
-		i++;
-	}
-	i = 0;
-	while (str[i])
-	{
-		// eğer harf ve sonraki karakter harf değilse = kelimenin sonu
-		if ((str[i] >= 'a' && str[i] <= 'z')
-			&& !(str[i + 1] >= 'a' && str[i + 1] <= 'z')
-			&& !(str[i + 1] >= 'A' && str[i + 1] <= 'Z'))
-			str[i] -= 32;                     // son harfi büyüt
-		write(1, &str[i], 1);
+		if (s[i] >= 'A' && s[i] <= 'Z')
+			s[i] += 32; // hepsini küçük yap
+		if ((s[i] >= 'a' && s[i] <= 'z') &&
+			(s[i + 1] == ' ' || s[i + 1] == '\t' || s[i + 1] == '\0'))
+			s[i] -= 32; // kelimenin son harfini büyük yap
+		write(1, &s[i], 1);
 		i++;
 	}
 }
@@ -31,12 +24,11 @@ int	main(int ac, char **av)
 	{
 		while (i < ac)
 		{
-			rstr_capitalizer(av[i]);
+			rstr_cap(av[i]);
 			write(1, "\n", 1);
 			i++;
 		}
 	}
 	else
 		write(1, "\n", 1);
-	return (0);
 }

@@ -2,41 +2,31 @@
 
 int main(int ac, char **av)
 {
-	int i = 0;
-	int j = 0;
+    // Sayaçlar: i, s1 için; j, s2 için.
+    int i = 0;
+    int j = 0;
 
-	if (ac == 3)
-	{
-		while (av[1][i] && av[2][j])
-		{
-			if (av[1][i] == av[2][j])
-				i++;
-			j++;
-		}
-		if (av[1][i] == '\0')
-			write(1, "1\n", 2);
-		else
-			write(1, "0\n", 2);
-	}
-	else
-		write(1, "\n", 1);
-	return (0);
+    // Sadece 2 argüman varsa devam et
+    if (ac == 3)
+    {
+        // String'lerden herhangi biri bitene kadar devam et
+        while (av[1][i] && av[2][j])
+        {
+            // Eğer s1'de aradığımız karakteri s2'de bulursak...
+            if (av[1][i] == av[2][j])
+                i++; // ...s1'deki bir sonraki karaktere geç.
+            
+            // s2'de her zaman bir sonraki karaktere ilerle.
+            j++;
+        }
+
+        // Döngü bittiğinde kontrol: s1'in sonuna ulaştık mı?
+        if (av[1][i] == '\0')
+            write(1, "1", 1); // Evet, ulaştık.
+        else
+            write(1, "0", 1); // Hayır, ulaşamadık.
+    }
+
+    write(1, "\n", 1);
+    return (0);
 }
-
-/* i → s1’in imleci, j → s2’nin imleci.
-
-s2 üzerinde soldan sağa yürürken eşleşme gördükçe i’yi ilerletiyoruz.
-
-döngü bittiğinde s1 tamamen bitti ise (av[1][i] == '\0') ⇒ 1, yoksa 0.
-
-sadece write kullanıldı, ek fonksiyon yok, while ile yazıldı.
-
-i → s1’in imleci, j → s2’nin imleci.
-
-s2 üzerinde soldan sağa yürürken eşleşme gördükçe i’yi ilerletiyoruz.
-
-döngü bittiğinde s1 tamamen bitti ise (av[1][i] == '\0') ⇒ 1, yoksa 0.
-
-sadece write kullanıldı, ek fonksiyon yok, while ile yazıldı.
-
-*/

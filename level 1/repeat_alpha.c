@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 				r = argv[1][i] - 'a' + 1;
 			else if(argv[1][i] >= 'A' && argv[1][i] <= 'Z')
 				r = argv[1][i] - 'A' + 1;
-			while(r-- > 0)
+			while(r--)
 				write(1, &argv[1][i], 1);
 			i++;
 		}
