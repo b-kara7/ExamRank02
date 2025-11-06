@@ -24,7 +24,7 @@ int	ft_atoi(char *str)
 
 void	ft_putnbr(int n)
 {
-	if (n < 0)
+	if(n < 0)
 	{
 		write(1, "-", 1);
 		n = -n;
