@@ -1,29 +1,34 @@
 #include <unistd.h>
 
-
-int main(int ac, char **av)
+int main(int argc, char **argv)
 {
-    int i = 0;
-    int j = 0;
-
-    if(ac == 3)
+    if (argc == 3)
     {
-        while (av[1][i] && av[2][j])
+        int seen[256] = {0};
+        int i = 0;
+        int j;
+        
+        while (argv[1][i])
         {
-            if(av[1][i] == av[2][j])
-                i++;
-            j++;
-        }
-        if(av[1][i] == '\0')
-        {
-            i = 0;
-            while (av[1][i])
+            // Eğer bu karakteri daha önce yazdırmadıysak
+            if (seen[(unsigned char)argv[1][i]] == 0)
             {
-                write(1, &av[1][i], 1);
-                i++;
+                j = 0;
+                // İkinci stringde var mı kontrol et
+                while (argv[2][j])
+                {
+                    if (argv[1][i] == argv[2][j])
+                    {
+                        write(1, &argv[1][i], 1);
+                        seen[(unsigned char)argv[1][i]] = 1;
+                        break;
+                    }
+                    j++;
+                }
             }
+            i++;
         }
-    }              
+    }
     write(1, "\n", 1);
     return (0);
 }

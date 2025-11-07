@@ -3,8 +3,8 @@
 int	main(int ac, char **av)
 {
 	int	i;
-	int	end;
 	int	start;
+	int	end;
 
 	if (ac == 2)
 	{
@@ -20,12 +20,10 @@ int	main(int ac, char **av)
 			while (i >= 0 && (av[1][i] != ' ' && av[1][i] != '\t'))
 				i--;
 			start = i + 1;
-			if (start <= end)
-			{
-				write(1, &av[1][start], end - start + 1);
-				if (i > 0)
-					write(1, " ", 1);
-			}
+			while (start <= end)
+				write(1, &av[1][start++], 1);
+			if (i > 0)
+				write(1, " ", 1);
 		}
 	}
 	write(1, "\n", 1);

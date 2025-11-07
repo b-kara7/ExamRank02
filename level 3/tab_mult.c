@@ -27,5 +27,7 @@ int	main(int ac, char **av)
 			i++;
 		}
 	}
+	else
+		write(1, "\n", 1);
 	return (0);
 }

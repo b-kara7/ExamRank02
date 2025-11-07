@@ -6,11 +6,10 @@ void	str_capitalizer(char *str)
 
 	while (str[i])
 	{
-		// Eğer harf büyükse küçült (tüm harfleri küçültüyoruz önce)
+		
 		if (str[i] >= 'A' && str[i] <= 'Z')
 			str[i] += 32;
 
-		// Eğer bu harf küçük harfse ve önceki karakter boşluk/tab/başlangıçsa
 		if ((str[i] >= 'a' && str[i] <= 'z') &&
 			(i == 0 || str[i - 1] == ' ' || str[i - 1] == '\t'))
 			str[i] -= 32; // büyük yap
