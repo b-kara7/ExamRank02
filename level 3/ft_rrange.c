@@ -1,30 +1,28 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-int *ft_rrange(int min, int max)
+int	*ft_rrange(int start, int end)
 {
-    int *tab;
-    int len;
-    int i = 0;
+	int	*tab;
+	int	len;
+	int	i;
 
-    // Kenar durum kontrolü ft_range ile aynı.
-    if (min >= max)
-        return (NULL);
-
-    // Uzunluk hesaplaması da aynı.
-    len = max - min;
-    tab = (int *)malloc(sizeof(int) * len);
-
-    // Bellek kontrolü yine aynı.
-    if (!tab)
-        return (NULL);
-
-    // Diziyi max-1'den başlayarak geriye doğru dolduruyoruz.
-    while (i < len)
-    {
-        // İşte sihirli satır burası!
-        tab[i] = max - 1 - i;
-        i++;
-    }
-    return (tab);
+	if (start < end)
+		len = end - start;
+	else
+		len = start - end;
+	tab = (int *)malloc(sizeof(int) * (len + 1));
+	if (!tab)
+		return (NULL);
+	i = 0;
+	while (i <= len)
+	{
+		if (start < end)
+			tab[i] = end - i;
+		else
+			tab[i] = end + i;
+		i++;
+	}
+	return (tab);
 }
+

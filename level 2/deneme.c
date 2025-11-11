@@ -1,34 +1,34 @@
 #include <unistd.h>
 
-int main(int argc, char **argv)
+int	max(int* tab, unsigned int len)
 {
-    if (argc == 3)
-    {
-        int seen[256] = {0};
-        int i = 0;
-        int j;
-        
-        while (argv[1][i])
-        {
-            // Eğer bu karakteri daha önce yazdırmadıysak
-            if (seen[(unsigned char)argv[1][i]] == 0)
-            {
-                j = 0;
-                // İkinci stringde var mı kontrol et
-                while (argv[2][j])
-                {
-                    if (argv[1][i] == argv[2][j])
-                    {
-                        write(1, &argv[1][i], 1);
-                        seen[(unsigned char)argv[1][i]] = 1;
-                        break;
-                    }
-                    j++;
-                }
-            }
-            i++;
-        }
-    }
-    write(1, "\n", 1);
+    unsigned int i=0;
+    int max;
+
+   if(len == 0)
     return (0);
+   max = tab[0];
+   i=1;
+   while (i<len)
+   {
+        if(tab[i]>max)
+            max=tab[i];
+        i++;
+   }
+    return(max);
+}
+#include <stdio.h>
+
+int max(int *tab, unsigned int len);
+
+int main(void)
+{
+	int arr1[] = {1, 2, 3, 4, 5};
+	int arr2[] = {-10, -5, -20};
+	int arr3[] = {42};
+
+	printf("%d\n", max(arr1, 5)); // 5
+	printf("%d\n", max(arr2, 3)); // -5
+	printf("%d\n", max(arr3, 1)); // 42
+	printf("%d\n", max(arr1, 0)); // 0
 }
