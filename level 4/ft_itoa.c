@@ -1,58 +1,70 @@
+
 #include <stdlib.h>
 
-int	len_count(long n)
+static int len_calc(long n)
 {
-	int	len;
+	int len = 0;
 
-	len = 0;
 	if (n <= 0)
 		len++;
-	while (n)
+	while (n > 0)
 	{
-		len++;
 		n /= 10;
+		len++;
 	}
 	return (len);
 }
 
-char	*ft_itoa(int nbr)
+char	*ft_itoa(int n)
 {
-	long	n;
+	long	nb;
 	int		len;
 	char	*str;
 
-	// 1. adım: sayıyı long’a çevir
-	n = nbr;
-
-	// 2. adım: kaç karakter olacağını hesapla
-	len = len_count(n);
-
-	// 3. adım: bellek ayır
+	nb = n;
+	len = len_calc(nb);
 	str = malloc(len + 1);
 	if (!str)
-		return (NULL);
-
-	// 4. adım: stringin sonuna null koy
-	str[len--] = '\0';
-
-	// 5. adım: eğer sayı sıfırsa direkt yaz
-	if (n == 0)
+		return (0);
+	str[len] = '\0';
+	if (nb == 0)
 		str[0] = '0';
-
-	// 6. adım: negatifse işareti koy ve pozitife çevir
-	if (n < 0)
+	if (nb < 0)
 	{
 		str[0] = '-';
-		n = -n;
+		nb = -nb;
 	}
-
-	// 7. adım: sayıyı sondan başlayarak karaktere çevir
-	while (n > 0)
+	while (nb > 0)
 	{
-		str[len--] = (n % 10) + '0';
-		n /= 10;
+		str[--len] = (nb % 10) + '0';
+		nb /= 10;
 	}
-
-	// 8. adım: oluşan stringi döndür
 	return (str);
+}
+#include <stdio.h>
+#include <stdlib.h>
+
+char *ft_itoa(int n);
+
+int main(void)
+{
+    char *s;
+
+    s = ft_itoa(0);
+    printf("%s\n", s);
+    free(s);
+
+    s = ft_itoa(12345);
+    printf("%s\n", s);
+    free(s);
+
+    s = ft_itoa(-9876);
+    printf("%s\n", s);
+    free(s);
+
+    s = ft_itoa(-2147483648);
+    printf("%s\n", s);
+    free(s);
+
+    return 0;
 }
