@@ -32,14 +32,14 @@ void	ft_putnbr(int n)
 
 int	main(int ac, char **av)
 {
-	int nb = 0;
+	int n = 0;
 	int sum = 0;
 	int i = 2;
 
 	if (ac == 2)
 	{
-		nb = ft_atoi(av[1]);
-		while (i <= nb)
+		n = ft_atoi(av[1]);
+		while (i <= n)
 		{
 			if (is_prime(i))
 				sum += i;
@@ -47,8 +47,6 @@ int	main(int ac, char **av)
 		}
 		ft_putnbr(sum);
 	}
-	else
-		write(1, "0", 1);
 	write(1, "\n", 1);
 	return (0);
 }

@@ -4,7 +4,7 @@ int     max(int* tab, unsigned int len)
 {
     unsigned int i ;
     int max ;
-    if(len == 0)
+    if(!len)
         return (0);
     i = 1;
     max = tab[0];

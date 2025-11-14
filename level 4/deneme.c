@@ -1,41 +1,39 @@
 #include <unistd.h>
 
-void rostring(char *str)
-{
-	int i=0;
-	int end=0;
-	int start=0;
-	int space = 0;
+#include <stdlib.h>
 
-		while (str[i]== ' ' || str[i] == '\t')
-			i++;
-		start = i;
-		while(str[i] && str[i] !=' ' && str[i] !='\t')
-			i++;
-		end = i;
-		while (str[i])
-		{
-			while (str[i]== ' ' || str[i] == '\t')
-				i++;
-			if(str[i])
-			{
-				if(space)
-					write(1, " ", 1);
-				while (str[i] && (str[i] !=' ' && str[i] !='\t'))
-					write(1, &str[i++], 1);
-				space =1;
-			}
-		}	
-	if(space && start < end)
-		write(1, " ", 1);
-	while (start < end)
-		write(1, &str[start++], 1);
+static int len_calc(long n)
+{
+	int len=0;
+	if(n <= 0)
+		len++;
+	while (n)
+	{
+		n /=10;
+		len++;
+	}
+	return(len);
 }
-
-int main(int ac, char **av)
+char *ft_itoa(int n)
 {
-	if(ac==2)
-		rostring(av[1]);
-	write(1, "\n", 1);
-	return(0);
+	long nb = n;
+	int len =len_calc(nb);
+	char *s=malloc( len + 1);
+
+	if(!s)
+		return(NULL);
+	s[len] = '\0';
+	if(nb == 0)
+		s[0] = '0';
+	if (nb < 0)
+	{
+		s[0]= '-';
+		nb = -nb;
+	}
+	while(nb > 0)
+	{
+		s[--len] = (nb % 10) + '0';
+		nb /=10;
+	}
+	return(s);
 }

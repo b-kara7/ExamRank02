@@ -1,4 +1,4 @@
-#include <unistd.h>  // write için (gerekirse)
+
 #include <stdio.h>   // printf için (test main kullanırsak)
 
 unsigned char	swap_bits(unsigned char octet)

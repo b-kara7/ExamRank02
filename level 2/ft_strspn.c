@@ -28,7 +28,7 @@ size_t ft_strspn(const char *s, const char *accept)
 //  Çünkü strspn sadece başlangıçtaki geçerli kısmın uzunluğunu döndürür.
 
 
-	if(found == 0)
+	if(!found)
 		return (i);
 	i++;
 	}

@@ -1,14 +1,18 @@
+
 int	ft_atoi_base(const char *str, int str_base)
 {
-	int	result = 0;
-	int	sign = 1;
+	int	result;
+	int	sign;
 	int	value;
+
+	result = 0;
+	sign = 1;
 
 	// boşlukları atla
 	while (*str == ' ' || (*str >= 9 && *str <= 13))
 		str++;
 
-	// işaret kontrolü
+	// işaret
 	if (*str == '-')
 	{
 		sign = -1;
@@ -17,7 +21,7 @@ int	ft_atoi_base(const char *str, int str_base)
 	else if (*str == '+')
 		str++;
 
-	// sayıyı dönüştür
+	// ana dönüşüm
 	while (*str)
 	{
 		if (*str >= '0' && *str <= '9')
@@ -27,9 +31,11 @@ int	ft_atoi_base(const char *str, int str_base)
 		else if (*str >= 'A' && *str <= 'F')
 			value = *str - 'A' + 10;
 		else
-			break; // geçersiz karakter
+			break;
+
 		if (value >= str_base)
-			break; // base’in dışındaysa bitir
+			break;
+
 		result = result * str_base + value;
 		str++;
 	}

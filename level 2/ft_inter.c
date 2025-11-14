@@ -11,7 +11,7 @@ int main(int argc, char **argv)
         while (argv[1][i])
         {
             // Eğer bu karakteri daha önce yazdırmadıysak
-            if (lookup[(unsigned char)argv[1][i]] == 0)
+            if (!lookup[(unsigned char)argv[1][i]])
             {
                 j = 0;
                 // İkinci stringde var mı kontrol et
