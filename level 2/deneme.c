@@ -1,34 +1,21 @@
 #include <unistd.h>
 
-int	max(int* tab, unsigned int len)
+char    *ft_strdup(char *src)
 {
-    unsigned int i=0;
-    int max;
+    int i =0;
+    int len =0;
+    char *tab
 
-   if(len == 0)
-    return (0);
-   max = tab[0];
-   i=1;
-   while (i<len)
-   {
-        if(tab[i]>max)
-            max=tab[i];
+    while(src[len])
+        len++;
+    tab=malloc(sizeof(int) * len +1);
+    if(!tab)
+        return(NULL);
+    if(src[i])
+    {
+        tab[i] = src[i];
         i++;
-   }
-    return(max);
-}
-#include <stdio.h>
-
-int max(int *tab, unsigned int len);
-
-int main(void)
-{
-	int arr1[] = {1, 2, 3, 4, 5};
-	int arr2[] = {-10, -5, -20};
-	int arr3[] = {42};
-
-	printf("%d\n", max(arr1, 5)); // 5
-	printf("%d\n", max(arr2, 3)); // -5
-	printf("%d\n", max(arr3, 1)); // 42
-	printf("%d\n", max(arr1, 0)); // 0
+    }
+    tab[i] = '\0';
+    return(tab);
 }
