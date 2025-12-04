@@ -154,25 +154,74 @@ int main (int ac, char **av)
     return(0);
 }
 
+void	putnbr(int n)
+{
+	char c;
 
+	if (n >= 10)
+		putnbr(n / 10);
+	c = n % 10 + '0';
+	write(1, &c, 1);
+}
 
+int	mini_atoi(char *s)
+{
+	int i = 0;
+	int res = 0;
+
+	while (s[i] >= '0' && s[i] <= '9')
+	{
+		res = res * 10 + (s[i] - '0');
+		i++;
+	}
+	return (res);
+}
+int main(int ac, char **av)
+{
+    int i = 2;
+    int n;
+
+    if (ac == 2)
+    {
+        n = mini_atoi(av[1]);
+
+        if(n == 1)
+            write(1, "1", 1);
+        while (i <= n)
+        {
+            if ( n % i == 0)
+            {
+                putnbr(i);
+                n /=i;
+                if(n > 0)
+                    write(1, "*", 1);
+            }
+            else
+                i++;
+        }
+    }
+    write(1, "\n", 1);
+    return(0);
+}
 static int len_calc(long n)
 {
     int len = 0;
 
     if(n <= 0)
-        len++;
-    while (n > 0)
     {
-        n /= 10;
+        len++;
+    }
+    while(n > 0)
+    {
+        n /=10;
         len++;
     }
     return(len);
 }
-char *ft_itoa(int n)
+char	*ft_itoa(int n)
 {
-    long nb = 0;
-    int len = 0;
+    long nb=0;
+    int len=0;
     char *str;
 
     nb = n;
@@ -182,8 +231,11 @@ char *ft_itoa(int n)
         return (0);
     str[len] = '\0';
     if(nb == 0)
+    {
         str[0] = '0';
-    if(nb < 0)
+        return(str);
+    }
+    if (nb < 0)
     {
         str[0] = '-';
         nb = -nb;
@@ -191,10 +243,25 @@ char *ft_itoa(int n)
     while (nb > 0)
     {
         str[--len] = (nb % 10) + '0';
-        nb / 10;
+        nb /=10;
     }
     return(str);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
