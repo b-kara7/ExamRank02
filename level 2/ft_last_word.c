@@ -51,3 +51,62 @@ int main(int ac, char **av)
     write(1, "\n", 1);
     return (0);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#include <unistd.h>
+
+int main(int ac, char **av)
+{
+    int i;
+    int start;
+
+    if (ac == 2)
+    {
+        i = 0;
+
+        // sona git
+        while (av[1][i])
+            i++;
+
+        i--; // son gerçek karakter
+
+        // sondaki boşlukları at
+        while (i >= 0 && (av[1][i] == ' ' || av[1][i] == '\t'))
+            i--;
+
+        // kelime yoksa direkt newline
+        if (i < 0)
+        {
+            write(1, "\n", 1);
+            return (0);
+        }
+
+        // burası son kelimenin son harfi
+        // şimdi başına kadar geri gel
+        start = i;
+        while (start >= 0 && av[1][start] != ' ' && av[1][start] != '\t')
+            start--;
+
+        // kelimeyi yazdır
+        start++;
+        while (start <= i)
+        {
+            write(1, &av[1][start], 1);
+            start++;
+        }
+    }
+    write(1, "\n", 1);
+    return (0);
+}
