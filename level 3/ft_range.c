@@ -1,32 +1,30 @@
-#include <stdlib.h> // malloc için bu kütüphane şart!
+#include <stdlib.h>
 
-/**
- * ft_range: Verilen min (dahil) ve max (hariç) arasında
- * artan sırada bir tamsayı dizisi oluşturur.
- * Örnek: ft_range(3, 7) -> {3, 4, 5, 6}
- */
-int *ft_range(int min, int max)
+int *ft_range(int start, int end)
 {
     int *tab;
     int len;
-    int i = 0;
+    int i;
 
-    // Eğer min >= max ise aralık oluşturulamaz, NULL döneriz.
-    if (min >= max)
-        return (NULL);
+    // 1. Uzunluk hesabı (rrange ile tamamen aynı)
+    if (start < end)
+        len = end - start + 1;
+    else
+        len = start - end + 1;
 
-    // Dizinin uzunluğunu hesaplıyoruz.
-    len = max - min;
+    // 2. Yer ayırma (rrange ile tamamen aynı)
     tab = (int *)malloc(sizeof(int) * len);
-
-    // Bellek ayrılamadıysa NULL döneriz.
     if (!tab)
         return (NULL);
 
-    // Diziyi min'den başlayarak dolduruyoruz.
+    // 3. Doldurma (İŞTE FARK BURADA!)
+    i = 0;
     while (i < len)
     {
-        tab[i] = min + i;
+        if (start < end)
+            tab[i] = start + i; // start'ın üzerine ekleyerek gidiyoruz
+        else
+            tab[i] = start - i; // start'tan eksilterek gidiyoruz
         i++;
     }
     return (tab);
