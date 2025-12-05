@@ -1,28 +1,31 @@
-#include <stdio.h>
+
 #include <stdlib.h>
 
-int	*ft_rrange(int start, int end)
+int *ft_rrange(int start, int end)
 {
-	int	*tab;
-	int	len;
-	int	i;
+    int *tab;
+    int len;
+    int i;
 
-	if (start < end)
-		len = end - start;
-	else
-		len = start - end;
-	tab = (int *)malloc(sizeof(int) * (len + 1));
-	if (!tab)
-		return (NULL);
-	i = 0;
-	while (i <= len)
-	{
-		if (start < end)
-			tab[i] = end - i;
-		else
-			tab[i] = end + i;
-		i++;
-	}
-	return (tab);
+    // Uzunluğu en başta mutlak değer + 1 olarak hesapla
+    if (start > end)
+        len = start - end + 1;
+    else
+        len = end - start + 1;
+
+    tab = (int *)malloc(sizeof(int) * len); // +1'e gerek kalmadı çünkü len içinde var
+    if (!tab)
+        return (NULL);
+
+    i = 0;
+    while (i < len) // <= yerine < kullanırsın, daha standart olur
+    {
+        if (start < end)
+            tab[i] = end - i;
+        else
+            tab[i] = end + i;
+        i++;
+    }
+    return (tab);
 }
 

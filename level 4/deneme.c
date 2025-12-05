@@ -154,15 +154,6 @@ int main (int ac, char **av)
     return(0);
 }
 
-void	putnbr(int n)
-{
-	char c;
-
-	if (n >= 10)
-		putnbr(n / 10);
-	c = n % 10 + '0';
-	write(1, &c, 1);
-}
 
 int	mini_atoi(char *s)
 {
@@ -178,30 +169,31 @@ int	mini_atoi(char *s)
 }
 int main(int ac, char **av)
 {
-    int i = 2;
-    int n;
+  int i =2;
+  int n = 0;
 
-    if (ac == 2)
+  if (ac == 2)
+  {
+    n = mini_atoi(av[1]);
+
+    if ( n == 1)
+        printf("1");
+    while (i <= n)
     {
-        n = mini_atoi(av[1]);
-
-        if(n == 1)
-            write(1, "1", 1);
-        while (i <= n)
-        {
-            if ( n % i == 0)
-            {
-                putnbr(i);
-                n /=i;
-                if(n > 0)
-                    write(1, "*", 1);
-            }
-            else
-                i++;
-        }
+        if(n % i == 0)
+        (
+            printf("%d", i);
+            n /=i;
+            if(n > 1)
+                printf("*");
+        )
+        else
+            i++;
     }
-    write(1, "\n", 1);
-    return(0);
+  }
+  printf("\n");
+  return(0);
+  
 }
 static int len_calc(long n)
 {

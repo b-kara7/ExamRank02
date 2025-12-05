@@ -1,12 +1,5 @@
 #include <stdio.h>
 
-void    putnbr(int n)
-{
-    if (n >= 10)
-        putnbr(n / 10);
-    printf("%d", n % 10);
-}
-
 int mini_atoi(char *s)
 {
     int i = 0;
@@ -36,7 +29,7 @@ int main(int ac, char **av)
         {
             if (n % i == 0)
             {
-                putnbr(i);
+                printf("%d", i);
                 n /= i;
                 if (n > 1)
                     printf("*");
